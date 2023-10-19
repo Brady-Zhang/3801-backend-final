@@ -29,6 +29,9 @@ Apache Maven 3.9.5
 ```
 java 1.8
 ```
+```
+MySQL 5.7
+```
 # Usage
 **1.Clone the Repository**:
 ```

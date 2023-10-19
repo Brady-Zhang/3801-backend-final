@@ -1,0 +1,108 @@
+server:
+  port: 9005
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/nhwc?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false
+    username: root
+    password: Psn248658$
+  http:
+    multipart:
+      max-request-size: 100MB
+      max-file-size: 10MB
+
+  thymeleaf:
+    cache: false
+#    prefix: classpath:/templates/
+#    encoding: UTF-8 #encodings
+#    suffix: .html #Template Suffix
+#    content-type: text/html
+
+druid:
+  # The number of physical connections established at initialisation. Initialisation occurs when the init method is called by the display, or the first getConnection is made.
+  initialSize: 20
+  #    Minimum number of connection pools
+  minIdle: 20
+  # Maximum number of connection pools
+  maxActive: 300
+  #    Configuring the Get Connection Wait Timeout
+  maxWait: 10000
+  #  Configure how often the detection interval is performed to detect idle connections that need to be closed, in milliseconds
+  timeBetweenEvictionRunsMillis: 60000
+  #  Configure the minimum time in milliseconds for a connection to live in the pool
+  minEvictableIdleTimeMillis: 300000
+  #  SQL to validate connection, different configuration for different data
+  validationQuery: select 1
+  #  It is recommended to configure it as true to not affect performance and to ensure security.
+  #  Detected when requesting a connection, if the idle time is greater than
+  #  timeBetweenEvictionRunsMillis，
+  #  Execute validationQuery to detect if the connection is valid.
+  testWhileIdle: true
+  #  Execute validationQuery when requesting a connection to check if the connection is valid, doing this configuration will reduce performance.
+  #  Here it is recommended to configure it as TRUE to prevent fetched connections from being unavailable
+  testOnBorrow: true
+  #  Execute validationQuery to check if the connection is valid when returning the connection, doing this configuration will reduce performance
+  testOnReturn: false
+  #  Whether or not to cache the preparedStatement, also known as PSCache.
+  #  PSCache is a huge performance booster for databases that support cursors, such as oracle.
+  #  There is no PSCache feature in versions below mysql 5.5, it is recommended to turn it off.
+  #  The authors are using PSCache in version 5.5, and through the monitoring interface, they found that PSCache has a cache hit record that
+  #  The should be supporting PSCache.
+  #  Turn on PSCache and specify the size of PSCache on each connection
+  poolPreparedStatements: true
+  maxPoolPreparedStatementPerConnectionSize: 20
+  #  The property type is a string, and the extension plugin is configured by aliasing the
+  #  Commonly used plugins are:
+  #  Filter:stat for monitoring statistics
+  #  Logging with filter:log4j
+  #  Filter:wall for defence against sql injection
+  filters: stat
+  # User name for access
+  loginUsername: ason
+  # Password for access
+  loginPassword: ason
+
+
+mybatis:
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  #Entity scan, multiple packages separated by comma or semicolon
+  typeAliasesPackage: com.huajia.entity
+  typeEnumsPackage: com.huajia.*
+  global-config:
+    #Primary key type 0: "database ID incremental", 1: "user input ID", 2: "globally unique ID (numeric unique ID)", 3: "globally unique ID UUID".
+    id-type: 2
+    #Field Policy 0: "Ignore Judgement",1: "Non-NULL Judgement"),2: "Non-Null Judgement"
+    field-strategy: 1
+    #Hump Underline Conversion
+    db-column-underline: false
+    #Refresh mapper debugger
+    refresh-mapper: true
+    #Database Upper Case Underscore Conversion
+    #capital-mode: true
+    #Sequence Interface Implementation Class Configuration
+    key-generator: com.baomidou.mybatisplus.incrementer.H2KeyGenerator
+    #Logical deletion configuration (3 configurations below)
+    logic-delete-value: 0
+    logic-not-delete-value: 1
+    #Custom sql injector
+    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+    # SQL parsing cache, enabled when multi-tenant @SqlParser annotation takes effect
+    sql-parser-cache: true
+  configuration:
+    map-underscore-to-camel-case: false
+    cache-enabled: false
+
+#logging
+logging:
+  level:
+    com:
+      example:
+        demo: DEBUG
+
+yo:
+  file:
+    root:
+      path: "D://img/"
+mybatis-plus:
+  type-handlers-package: com.example.demo.utils

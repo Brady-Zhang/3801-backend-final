@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UGroupMapper">
+
+    <!-- Generic Query Mapping Results -->
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.UGroupEntity">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="u_id" property="uId" />
+        <result column="u_name" property="uName" />
+        <result column="add_time" property="addTime" />
+    </resultMap>
+
+    <!-- Generic query result column -->
+    <sql id="Base_Column_List">
+        id, name, u_id, u_name, add_time
+    </sql>
+
+</mapper>

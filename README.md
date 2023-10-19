@@ -32,7 +32,7 @@ java 1.8
 # Usage
 **1.Clone the Repository**:
 ```
-git clone [repository-url]
+git clone https://github.com/Brady-Zhang/3801-backend-final.git
 ```
 **2.Navigate to the Project Directory**: 
 ```
